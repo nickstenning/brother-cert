@@ -93,3 +93,8 @@ Once the dependencies are installed, clone this repo and run
 `python build_release.py`. If you only want to build for certain OS or
 ARCH targets, edit the `targets` array in the `build_release.py` file
 before running it.
+
+## Links
+
+@Owl-Tec's write up & experience using this tool: 
+https://owltec.ca/Other/Installing+a+Let's+Encrypt+TLS+certificate+on+a+Brother+printer+automatically+with+Certbot+(%26+Cloudflare)
