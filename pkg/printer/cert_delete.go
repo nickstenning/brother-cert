@@ -78,10 +78,10 @@ func (p *printer) DeleteCert(id string) error {
 	// first delete form
 	// form values
 	data := url.Values{}
-	data.Set("pageid", "383")
+	data.Set("pageid", "483")
 	data.Set("CSRFToken", csrfToken)
-	data.Set("B8ea", "")
-	data.Set("B8fc", "")
+	data.Set("B1179", "")
+	data.Set("B118b", "")
 	data.Set("hidden_certificate_process_control", "1")
 	data.Set("hidden_certificate_idx", id)
 

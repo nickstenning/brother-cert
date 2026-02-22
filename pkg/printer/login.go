@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-const urlLogin = "/general/status.html"
+const urlLogin = "/home/status.html"
 
 var (
 	errLoginNoAuth           = errors.New("printer: login: no auth cookie received (wrong password?)")

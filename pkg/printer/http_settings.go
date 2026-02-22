@@ -69,13 +69,17 @@ func (p *printer) SetActiveCert(id string) error {
 
 	// submit initial form to change the cert
 	data := url.Values{}
-	data.Set("pageid", "326")
+	data.Set("pageid", "416")
 	data.Set("CSRFToken", csrfToken)
-	data.Set("B903", id)
-	// B91d always seems to be 1, but wasn't needed here
-	// Enable HTTPS for WebUI and IPP
-	data.Set("B86c", "1")
-	data.Set("B87e", "1")
+	data.Set("B1192", id)
+	// Enable HTTPS for Web UI
+	data.Set("B10b0", "1")
+	// Enable HTTPS redirect for Web UI
+	data.Set("B10b1", "1")
+	// Enable HTTPS for IPP
+	data.Set("cb_ipp_https", "1")
+	data.Set("B10cc", "1") // Port 443
+	data.Set("B10cd", "1") // Port 631
 	// there are some other values here but don't set them (which should
 	// leave them as-is in most cases)
 
@@ -119,7 +123,7 @@ func (p *printer) SetActiveCert(id string) error {
 
 	// submit confirmation (& reboot now)
 	data = url.Values{}
-	data.Set("pageid", "326")
+	data.Set("pageid", "416")
 	data.Set("CSRFToken", csrfToken)
 	// 4 == do NOT activate other secure protos
 	// 5 == DO activate other secure protos
