@@ -172,6 +172,9 @@ func (p *printer) UploadNewCert(keyPem, certPem []byte) (string, error) {
 		}
 	}
 
+	if countNew == 0 {
+		return "", errors.New("printer: upload: didn't find new cert in list")
+	}
 	// if more than one new, can't determine which was uploaded by this app
 	if countNew > 1 {
 		return "", errors.New("printer: upload: failed to deduce new cert's id")
