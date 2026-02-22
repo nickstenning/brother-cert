@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"slices"
 	"strings"
 	"time"
 )
@@ -27,13 +28,7 @@ func (p *printer) DeleteCert(id string) error {
 		return err
 	}
 
-	validID := false
-	for _, existingID := range existingIDs {
-		if existingID == id {
-			validID = true
-			break
-		}
-	}
+	validID := slices.Contains(existingIDs, id)
 	if !validID {
 		return errCertDeleteInvalidID
 	}
@@ -173,13 +168,7 @@ func (p *printer) DeleteCert(id string) error {
 		return err
 	}
 
-	idFound := false
-	for _, existingID := range existingIDs {
-		if existingID == id {
-			idFound = true
-			break
-		}
-	}
+	idFound := slices.Contains(existingIDs, id)
 	if idFound {
 		return errors.New("printer: failed to delete cert (still exists)")
 	}

@@ -8,6 +8,7 @@ import (
 	"mime/multipart"
 	"net/http"
 	"net/url"
+	"slices"
 	"time"
 )
 
@@ -163,15 +164,7 @@ func (p *printer) UploadNewCert(keyPem, certPem []byte) (string, error) {
 	newId := ""
 	countNew := 0
 	for i := range newCertIDs {
-		found := false
-
-		// check if existed originally
-		for j := range origCertIDs {
-			if newCertIDs[i] == origCertIDs[j] {
-				found = true
-				break
-			}
-		}
+		found := slices.Contains(origCertIDs, newCertIDs[i])
 
 		if !found {
 			newId = newCertIDs[i]
